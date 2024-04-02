@@ -1,0 +1,68 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Lab_6_Blazor
+build_property.RootNamespace = Lab_6_Blazor
+build_property.ProjectDir = C:\Users\lrwco\source\repos\Lab 6 Blazor\Lab 6 Blazor\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\lrwco\source\repos\Lab 6 Blazor\Lab 6 Blazor
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Pages/BorrowBook.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9ycm93Qm9vay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Pages/ManageBooks.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlQm9va3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Pages/ManageUsers.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlVXNlcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Pages/ReturnBook.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmV0dXJuQm9vay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-my3gkx7lc0
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ayycng7xeo
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lrwco/source/repos/Lab 6 Blazor/Lab 6 Blazor/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

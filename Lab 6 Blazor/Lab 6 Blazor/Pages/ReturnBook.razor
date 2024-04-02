@@ -1,0 +1,36 @@
+﻿@page "/returnbook"
+@using Lab_6_Blazor.Services
+@using Lab_6_Blazor.Data
+@inject LibraryService LibraryService
+
+<h3>Return Book</h3>
+
+@foreach (var entry in LibraryService.ListBorrowedBooks())
+{
+        <div>
+            <p>User: @entry.Key.Name</p>
+        @if (entry.Value.Any())
+        {
+                    <ul>
+                @foreach (var book in entry.Value)
+                {
+                                <li>
+                                    "@book.Title" by @book.Author
+                                    <button @onclick="() => ProcessReturnBook(entry.Key, book)">Return</button>
+                                </li>
+                }
+                    </ul>
+        }
+        else
+        {
+                    <p>No books borrowed.</p>
+        }
+        </div>
+}
+
+@code {
+    private void ProcessReturnBook(User user, Book book)
+    {
+        LibraryService.ReturnBook(book.Id, user.Id);
+    }
+}

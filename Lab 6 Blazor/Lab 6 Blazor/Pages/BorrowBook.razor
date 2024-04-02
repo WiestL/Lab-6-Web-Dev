@@ -1,0 +1,42 @@
+﻿@page "/borrowbook"
+@using Lab_6_Blazor.Services
+@using Lab_6_Blazor.Data
+@inject LibraryService LibraryService
+
+<h3>Borrow Book</h3>
+
+
+<EditForm Model="@borrowRequest" OnValidSubmit="@ProcessBorrowBook">
+    <InputSelect @bind-Value="borrowRequest.UserId">
+        @foreach (var user in LibraryService.ListUsers())
+        {
+                <option value="@user.Id">@user.Name</option>
+        }
+    </InputSelect>
+
+    <InputSelect @bind-Value="borrowRequest.BookId">
+        @foreach (var book in LibraryService.ListBooks())
+        {
+                <option value="@book.Id">@book.Title</option>
+        }
+    </InputSelect>
+
+    <button type="submit">Borrow</button>
+</EditForm>
+
+@code {
+    private BorrowRequest borrowRequest = new BorrowRequest();
+
+    private void ProcessBorrowBook()
+    {
+        LibraryService.BorrowBook(borrowRequest.BookId, borrowRequest.UserId);
+        // You may want to reset the form and update the list of available books
+    }
+
+    // Helper class to handle borrow request in the form
+    private class BorrowRequest
+    {
+        public int UserId { get; set; }
+        public int BookId { get; set; }
+    }
+}

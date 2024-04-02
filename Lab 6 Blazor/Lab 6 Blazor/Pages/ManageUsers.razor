@@ -1,0 +1,118 @@
+﻿@page "/manageusers"
+@using Lab_6_Blazor.Services
+@using Lab_6_Blazor.Data
+@inject LibraryService LibraryService
+
+<h3>Manage Users</h3>
+
+<EditForm Model="@newUser" OnValidSubmit="@AddUser">
+    <InputText id="name" @bind-Value="newUser.Name" />
+    <InputText id="email" @bind-Value="newUser.Email" />
+    <button type="submit">Add User</button>
+</EditForm>
+
+@if (users.Any())
+{
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in users)
+            {
+                        <tr>
+                            <td>
+                        @if (user.Id == editingUser?.Id)
+                        {
+                                        <EditForm Model="editingUser" OnValidSubmit="@SaveUser">
+                                            <InputText @bind-Value="editingUser.Name" />
+                                        </EditForm>
+                        }
+                        else
+                        {
+                            @user.Name
+                        }
+                            </td>
+                            <td>
+                        @if (user.Id == editingUser?.Id)
+                        {
+                                        <EditForm Model="editingUser" OnValidSubmit="@SaveUser">
+                                            <InputText @bind-Value="editingUser.Email" />
+                                        </EditForm>
+                        }
+                        else
+                        {
+                            @user.Email
+                        }
+                            </td>
+                            <td>
+                        @if (user.Id == editingUser?.Id)
+                        {
+                                        <button type="submit" @onclick="SaveUser">Save</button>
+                                        <button type="button" @onclick="CancelEdit">Cancel</button>
+                        }
+                        else
+                        {
+                                        <button @onclick="() => BeginEdit(user)">Edit</button>
+                                        <button @onclick="() => DeleteUser(user.Id)">Delete</button>
+                        }
+                            </td>
+                        </tr>
+            }
+            </tbody>
+        </table>
+}
+else
+{
+        <p>No users found.</p>
+}
+
+@code {
+    private List<User> users;
+    private User newUser = new User();
+    private User editingUser; // Used for binding in edit mode
+
+    protected override void OnInitialized()
+    {
+        users = LibraryService.ListUsers();
+    }
+
+    private void AddUser()
+    {
+        LibraryService.AddUser(newUser.Name, newUser.Email);
+        newUser = new User(); // Reset the form
+        users = LibraryService.ListUsers(); // Refresh the list
+    }
+
+    private void BeginEdit(User user)
+    {
+        editingUser = new User
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email
+            };
+    }
+
+    private void SaveUser()
+    {
+        LibraryService.EditUser(editingUser); // Save changes from the editing user
+        editingUser = null; // Exit edit mode
+        users = LibraryService.ListUsers(); // Refresh the list
+    }
+
+    private void CancelEdit()
+    {
+        editingUser = null; // Exit edit mode without saving changes
+    }
+
+    private void DeleteUser(int userId)
+    {
+        LibraryService.DeleteUser(userId);
+        users = LibraryService.ListUsers(); // Refresh the list
+    }
+}

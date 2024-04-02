@@ -1,0 +1,88 @@
+﻿@page "/managebooks"
+@using Lab_6_Blazor.Data
+@using Lab_6_Blazor.Services
+@inject LibraryService LibraryService
+
+<h3>Manage Books</h3>
+
+<EditForm Model="@newBook" OnValidSubmit="@AddBook">
+    <InputText id="title" @bind-Value="newBook.Title" />
+    <InputText id="author" @bind-Value="newBook.Author" />
+    <InputText id="isbn" @bind-Value="newBook.ISBN" />
+    <button type="submit">Add Book</button>
+</EditForm>
+
+<table>
+    <tbody>
+        @foreach (var book in books)
+        {
+                <tr>
+                @if (book.Id == editingBook?.Id)
+                {
+                            <td>
+                                <EditForm Model="editingBook" OnValidSubmit="@(() => SaveBook())">
+                                    <td><InputText @bind-Value="editingBook.Title" /></td>
+                                    <td><InputText @bind-Value="editingBook.Author" /></td>
+                                    <td><InputText @bind-Value="editingBook.ISBN" /></td>
+                                    <td>
+                                        <button type="submit">Save</button>
+                                        <button type="button" @onclick="CancelEdit">Cancel</button>
+                                    </td>
+                                </EditForm>
+                            </td>
+                }
+                else
+                {
+                            <td>@book.Title</td>
+                            <td>@book.Author</td>
+                            <td>@book.ISBN</td>
+                            <td>
+                                <button @onclick="() => BeginEdit(book)">Edit</button>
+                                <button @onclick="() => DeleteBook(book.Id)">Delete</button>
+                            </td>
+                }
+                </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Book> books;
+    private Book newBook = new Book();
+    private Book editingBook; // Used for binding in edit mode
+
+    protected override void OnInitialized()
+    {
+        books = LibraryService.ListBooks();
+    }
+
+    private void AddBook()
+    {
+        LibraryService.AddBook(newBook.Title, newBook.Author, newBook.ISBN);
+        newBook = new Book(); // Reset the form
+        books = LibraryService.ListBooks(); // Refresh the list
+    }
+
+    private void BeginEdit(Book book)
+    {
+        editingBook = book; // Assign the book to be edited
+    }
+
+    private void SaveBook()
+    {
+        LibraryService.EditBook(editingBook); // Save changes
+        editingBook = null; // Exit edit mode
+        books = LibraryService.ListBooks(); // Refresh the list
+    }
+
+    private void CancelEdit()
+    {
+        editingBook = null; // Exit edit mode without saving changes
+    }
+
+    private void DeleteBook(int bookId)
+    {
+        LibraryService.DeleteBook(bookId);
+        books = LibraryService.ListBooks(); // Refresh the list
+    }
+}
